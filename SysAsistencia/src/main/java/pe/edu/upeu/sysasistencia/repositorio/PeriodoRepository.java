@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upeu.sysasistencia.modelo.Periodo;
 
 @Repository
-public interface PeriodoRepository extends JpaRepository<Periodo, Long> {
+public interface PeriodoRepository extends CrudGenericoRepository<Periodo, Long> {
 
 }

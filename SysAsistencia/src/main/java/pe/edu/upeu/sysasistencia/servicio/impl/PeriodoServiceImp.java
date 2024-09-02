@@ -1,19 +1,33 @@
 package pe.edu.upeu.sysasistencia.servicio.impl;
 
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.sysasistencia.modelo.Periodo;
+import pe.edu.upeu.sysasistencia.repositorio.CrudGenericoRepository;
 import pe.edu.upeu.sysasistencia.repositorio.PeriodoRepository;
 import pe.edu.upeu.sysasistencia.servicio.PeriodoService;
 
 import java.util.List;
 
+
 @Service
-public class PeriodoServiceImp implements PeriodoService {
+@Transactional
+@RequiredArgsConstructor
+public class PeriodoServiceImp extends CrudGenericoServiceImp<Periodo,Long> implements PeriodoService {
 
-    @Autowired
-    PeriodoRepository periodoRepository;
+    private final PeriodoRepository repo;
 
+    @Override
+    protected CrudGenericoRepository<Periodo, Long> getRepo() {
+        return repo;
+    }
+
+
+
+/*
     @Override
     public List<Periodo> obtenerPeriodos() {
         return periodoRepository.findAll();
@@ -37,5 +51,5 @@ public class PeriodoServiceImp implements PeriodoService {
     @Override
     public void actualizarPeriodo(Periodo periodo, Long id) {
         periodoRepository.save(periodo);
-    }
+    }*/
 }
