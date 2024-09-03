@@ -19,7 +19,7 @@ public class AccesoController {
     @GetMapping("/list")
     public ResponseEntity<List<Acceso>> findAll() {
         List<Acceso> p=accesoService.findAll();
-        return ResponseEntity.ok(p);
+        return ResponseEntity.ok().body(p);
     }
 
     @GetMapping("/list/{id}")

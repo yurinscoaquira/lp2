@@ -16,7 +16,7 @@ public class AccesoServiceImp extends CrudGenericoServiceImp<Acceso, Long> imple
 
     @Override
     protected CrudGenericoRepository<Acceso, Long> getRepo() {
-        return null;
+        return repo;
     }
 }
 
