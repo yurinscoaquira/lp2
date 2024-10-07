@@ -35,7 +35,13 @@
       <small class="error-text">Este campo es requerido</small>
     </div>
   </div>
-
+  <div>
+    <label>Stock Old</label>
+    <input type="number" formControlName="stockOld" placeholder="stockOld" />
+    <div *ngIf="productForm.controls['stockOld'].invalid && productForm.controls['stockOld'].touched">
+      <small class="error-text">Este campo es requerido</small>
+    </div>
+  </div>
   <div>
     <label>Categoría</label>
     <select formControlName="categoria">
