@@ -6,6 +6,9 @@ import {ProductoService} from "../../servicio/producto.service";
 import {Producto} from "../../modelo/Producto";
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {ProductoRepor} from "../../modelo/ProductoRepor";
+import {CategoriaService} from "../../servicio/categoria.service";
+import {MarcaService} from "../../servicio/marca.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-form-producto',
@@ -30,10 +33,11 @@ export class FormProductoComponent implements OnInit {
     { idCategoria: 3, nombre: 'Ropa' }
   ]; // Ejemplo de categorías con objetos
 
-  marcas: Marca[] = [
+  marcas: Marca[] = [];
+  /*s: Marca[] = [
     { idMarca: 1, nombre: 'Marca A' },
     { idMarca: 2, nombre: 'Marca B' }
-  ]; // Ejemplo de marcas como objetos
+  ]; */
 
   unidadesMedida = [
     { idUnidad: 1, nombre: 'Unidad' },
@@ -43,7 +47,7 @@ export class FormProductoComponent implements OnInit {
 
   productoSeleccionado:ProductoRepor|null = null;
 
-  constructor(private serviceProducto:ProductoService, private fb: FormBuilder) {
+  constructor(private serviceProducto:ProductoService, private sevicioMarca: MarcaService, private fb: FormBuilder) {
     this.productForm = this.fb.group({
       idProducto: [null],
       nombre: ['', Validators.required],
@@ -70,6 +74,12 @@ export class FormProductoComponent implements OnInit {
       });
     }
   });
+
+  this.sevicioMarca.findAll();
+    this.sevicioMarca.marcas$.subscribe(data=>{
+      console.log(data);
+      this.marcas=data;
+    });
 
 
 
