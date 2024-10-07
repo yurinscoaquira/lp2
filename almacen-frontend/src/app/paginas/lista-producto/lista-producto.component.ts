@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProductoService} from "../../servicio/producto.service";
-import {Producto} from "../../modelo/Producto";
 import {ProductoRepor} from "../../modelo/ProductoRepor";
 import {
   MatCell, MatCellDef,
@@ -11,15 +10,17 @@ import {
   MatTableDataSource
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
+import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FormProductoComponent} from "../form-producto/form-producto.component";
+import {MaterialModule} from "../../material/material.module";
 
 @Component({
   selector: 'app-lista-producto',
   standalone: true,
   imports: [
+    MaterialModule,
     MatFormField,
     MatTable,
     MatInput,
@@ -36,7 +37,8 @@ import {FormProductoComponent} from "../form-producto/form-producto.component";
     MatCellDef,
     MatHeaderCellDef,
     MatLabel,
-    FormProductoComponent
+    FormProductoComponent,
+    MatSortModule
   ],
   templateUrl: './lista-producto.component.html',
   styleUrl: './lista-producto.component.css'

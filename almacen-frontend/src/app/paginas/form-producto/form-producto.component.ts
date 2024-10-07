@@ -23,6 +23,7 @@ export class FormProductoComponent implements OnInit {
 
   productForm: FormGroup;
   productSaved = false;
+
   categorias: Categoria[] = [
     { idCategoria: 1, nombre: 'Electrónica' },
     { idCategoria: 2, nombre: 'Hogar' },
@@ -38,6 +39,8 @@ export class FormProductoComponent implements OnInit {
     { idUnidad: 1, nombre: 'Unidad' },
     { idUnidad: 2, nombre: 'Caja' }
   ]; // Ejemplo de unidades de medida como objetos
+
+
   productoSeleccionado:ProductoRepor|null = null;
 
   constructor(private serviceProducto:ProductoService, private fb: FormBuilder) {
@@ -66,7 +69,10 @@ export class FormProductoComponent implements OnInit {
         unidadMedida: producto.unidadMedida.idUnidad
       });
     }
-  })
+  });
+
+
+
   }
 
   saveProduct() {
